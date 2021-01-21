@@ -23,5 +23,13 @@ export class CinemaService {
   getProjections(salle: any) {
     let url= salle._links.projections.href.replace("{?projection}","");
     return this.http.get(url+"?projection=p1");
-  } 
+  }
+
+
+
+  getTicketsPlaces(p) {
+    let url= p._links.tickets.href.replace("{?projection}","");
+    return this.http.get(url+"?projection=p1");
+
+  }
 }

@@ -14,6 +14,7 @@ export class CinemaComponent implements OnInit {
   public currentVille;
   public currentCinema;
   public salles: any;
+  private currentProjection;
 
   constructor(public cinemaService:CinemaService) { }
 
@@ -52,8 +53,15 @@ export class CinemaComponent implements OnInit {
       console.log(err);
     })
   }
-    
 
-  
 
+  onGetTicketsPlaces(p:   any) {
+    this.currentProjection=p;
+    this.cinemaService.getTicketsPlaces(p).subscribe(data=>{
+        this.currentProjection.tickets=data;
+      }, err=>{
+      console.log(err);
+    })
+
+  }
 }
